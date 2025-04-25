@@ -1,12 +1,16 @@
 from aiogram import executor
 
-from loader import dp
+from loader import dp, db, userdb, kinodb
 import middlewares, filters, handlers
 from utils.notify_admins import on_startup_notify
 from utils.set_bot_commands import set_default_commands
 
 
 async def on_startup(dispatcher):
+    await db.create()
+    await userdb.create_table_users()
+    await kinodb.create_table_kino()
+    await set_default_commands(dispatcher)
     # Birlamchi komandalar (/star va /help)
     await set_default_commands(dispatcher)
 
