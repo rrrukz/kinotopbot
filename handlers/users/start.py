@@ -18,7 +18,7 @@ async def bot_start(message: types.Message):
         except asyncpg.exceptions.UniqueViolationError:
             user= await userdb.select_user(telegram_id=message.from_user.id)
 
-        await message.answer(f"Salom, {message.from_user.full_name}!")
+        await message.answer(f"Salom, bu botda kinolarni topishingiz mumkin{message.from_user.full_name}!")
 
 #         admingga xabar
         msg=f"Yangi foydalanuvchi qoshildi\n"
