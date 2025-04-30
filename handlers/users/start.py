@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from aiogram import types
 from aiogram.dispatcher.filters.builtin import CommandStart
 import asyncpg
@@ -22,3 +24,6 @@ async def bot_start(message: types.Message):
         msg=f"Yangi foydalanuvchi qoshildi\n"
         msg+=f"username :@ {user['username']}\n"
         await bot.send_message(ADMINS[0],msg)
+
+
+

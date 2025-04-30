@@ -50,7 +50,12 @@ class UserDatabase(Database):
         """Barcha foydalanuvchilarni o'chiradi."""
         sql = "DELETE FROM Users WHERE TRUE"
         await self.execute(sql, commit=True)
-
+    async def delete_user(self, telegram_id: int) -> None:
+        """ foydalanuvchini o'chiradi."""
+        sql = """
+        DELETE FROM Users WHERE id = $1
+        """
+        await self.execute(sql, parameters=(telegram_id,), commit=True)
     async def update_user_last_active(self, user_id: int):
         """Foydalanuvchi oxirgi faollik vaqtini yangilaydi."""
         sql = """
